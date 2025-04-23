@@ -55,13 +55,10 @@
                     <td>
                       <div class="btn-group">
                       <a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang= '.$khachHang['id'] ?>">
-                          <button class="btn btn-warning">Chi tiết</button>
+                          <button class="btn btn-outline-warning">Chi tiết</button>
                         </a>
                         <a href="<?= BASE_URL_ADMIN . '?act=form-sua-khach-hang&id_khach_hang= ' . $khachHang['id'] ?>">
-                          <button class="btn btn-primary">Sửa</button>
-                        </a>
-                        <a href="<?= BASE_URL_ADMIN . '?act=reset-password&id_khach_hang= ' . $khachHang['id'] ?>" onclick="return confirm('Bạn có muốn reset tài khoản này không?')">
-                          <button class="btn btn-danger">Reset</button>
+                          <button class="btn btn-outline-primary">Sửa</button>
                         </a>
                       </div>
                     </td>

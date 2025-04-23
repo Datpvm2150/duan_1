@@ -55,10 +55,10 @@
                     <td><?= $quanTri['trang_thai'] ==1 ? 'Active':'Inactive' ?></td>
                     <td>
                       <a href="<?= BASE_URL_ADMIN . '?act=form-sua-quan-tri&id_quan_tri=' . $quanTri['id'] ?>">
-                        <button class="btn btn-warning">Sửa</button>
+                        <button class="btn btn-outline-warning">Sửa</button>
                       </a>
                       <a href="<?= BASE_URL_ADMIN . '?act=reset-password&id_quan_tri=' . $quanTri['id'] ?>" onclick="return confirm('Bạn có muốn reset tài khoản này không?')">
-                        <button class="btn btn-danger">Reset</button>
+                        <button class="btn btn-outline-danger">Reset</button>
                       </a>
                     </td>
                   </tr>

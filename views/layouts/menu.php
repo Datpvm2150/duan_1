@@ -14,9 +14,6 @@
                         <div class="col-lg-6 text-right">
                             <div class="header-top-settings">
                                 <ul class="nav align-items-center justify-content-end">
-                                    <li class="nav-item d-none d-sm-inline-block">
-                                        <a href="<?= BASE_URL_ADMIN . '?act=login-admin' ?>" class="nav-link">Admin</a>
-                                    </li>
                                     <li class="curreny-wrap">
                                         $ Currency
                                         <i class="fa fa-angle-down"></i>
@@ -92,24 +89,31 @@
                                 </div>
                                 <div class="header-configure-area">
                                     <ul class="nav justify-content-end">
-                                        <label for=""><?php if (isset($_SESSION['user_client'])) {
-                                                            echo $_SESSION['user_client'];
-                                                        } ?></label>
+                                        <label for="">
+                                            <?php
+                                            if (isset($_SESSION['user_client'])) {
+                                                echo htmlspecialchars($_SESSION['user_client']); // Hiển thị email
+                                            }
+                                            ?>
+                                        </label>
                                         <li class="user-hover">
                                             <a href="#">
                                                 <i class="pe-7s-user"></i>
                                             </a>
                                             <ul class="dropdown-list">
-                                                <?php if (!isset($_SESSION['user_client'])) { ?>
+                                                <?php if (!isset($_SESSION['user_client'])): ?>
                                                     <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a></li>
                                                     <li><a href="<?= BASE_URL . '?act=register' ?>">Đăng ký</a></li>
-
-                                                <?php } else { ?>
-                                                    <li><a href="my-account.html">Tài khoản</a></li>
+                                                    <li><a href="<?= BASE_URL_ADMIN . '?act=login-admin' ?>">Đăng nhập Admin</a></li>
+                                                <?php else: ?>
+                                                    <li>
+                                                        <a href="my-account.html">
+                                                            Tài khoản: <?= htmlspecialchars($_SESSION['user_client']) ?> <!-- Hiển thị email thay vì ho_ten -->
+                                                        </a>
+                                                    </li>
                                                     <li><a href="<?= BASE_URL . '?act=lich-su-mua-hang' ?>">Đơn hàng</a></li>
                                                     <li><a href="<?= BASE_URL . '?act=dang-xuat' ?>">Đăng xuất</a></li>
-                                                <?php } ?>
-
+                                                <?php endif; ?>
                                             </ul>
                                         </li>
                                         <li>

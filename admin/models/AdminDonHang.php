@@ -1,6 +1,7 @@
 <?php
 
-class AdminDonHang {
+class AdminDonHang
+{
     public $conn;
 
     public function __construct()
@@ -8,24 +9,27 @@ class AdminDonHang {
         $this->conn = connectDB();
     }
 
-    public function getAllDonHang(){
-        try{
+    public function getAllDonHang()
+    {
+        try {
             $sql = 'SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai 
                     FROM don_hangs 
-                    INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id';
+                    INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id = trang_thai_don_hangs.id 
+                    ORDER BY don_hangs.id DESC';
 
             $stmt = $this->conn->prepare($sql);
 
             $stmt->execute();
 
             return $stmt->fetchAll();
-        } catch(Exception $e){
+        } catch (Exception $e) {
             echo "Lỗi" . $e->getMessage();
         }
     }
 
-    public function getAllTrangThaiDonHang(){
-        try{
+    public function getAllTrangThaiDonHang()
+    {
+        try {
             $sql = 'SELECT * FROM trang_thai_don_hangs ';
 
             $stmt = $this->conn->prepare($sql);
@@ -33,13 +37,14 @@ class AdminDonHang {
             $stmt->execute();
 
             return $stmt->fetchAll();
-        } catch(Exception $e){
+        } catch (Exception $e) {
             echo "Lỗi" . $e->getMessage();
         }
     }
 
-    public function getDetailDonHang($id){
-        try{
+    public function getDetailDonHang($id)
+    {
+        try {
             $sql = 'SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai, 
                     tai_khoans.ho_ten, tai_khoans.email, tai_khoans.so_dien_thoai,
                     phuong_thuc_thanh_toans.ten_phuong_thuc 
@@ -54,13 +59,14 @@ class AdminDonHang {
             $stmt->execute([':id' => $id]);
 
             return $stmt->fetch();
-        } catch(Exception $e){
+        } catch (Exception $e) {
             echo "Lỗi" . $e->getMessage();
         }
     }
 
-    public function getListDonHang($id){
-        try{
+    public function getListDonHang($id)
+    {
+        try {
             $sql = 'SELECT chi_tiet_don_hangs.*, san_phams.ten_san_pham
             FROM chi_tiet_don_hangs 
             INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id = san_phams.id 
@@ -71,13 +77,14 @@ class AdminDonHang {
             $stmt->execute([':id' => $id]);
 
             return $stmt->fetchAll();
-        } catch(Exception $e){
+        } catch (Exception $e) {
             echo "Lỗi" . $e->getMessage();
         }
     }
 
-    public function updateDonHang($id, $ten_nguoi_nhan, $sdt_nguoi_nhan, $email_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $trang_thai_id){
-        try{
+    public function updateDonHang($id, $ten_nguoi_nhan, $sdt_nguoi_nhan, $email_nguoi_nhan, $dia_chi_nguoi_nhan, $ghi_chu, $trang_thai_id)
+    {
+        try {
             $sql = 'UPDATE don_hangs
                     SET
                         ten_nguoi_nhan = :ten_nguoi_nhan,
@@ -100,77 +107,12 @@ class AdminDonHang {
                 ':id' => $id
             ]);
 
-            
+
             return true;
-        } catch(Exception $e){
+        } catch (Exception $e) {
             echo "Lỗi" . $e->getMessage();
         }
     }
 
-    // public function getDetailtAnhSanPham($id){
-    //     try{
-    //         $sql = 'SELECT * FROM hinh_anh_san_phams WHERE id = :id';
-
-    //         $stmt = $this->conn->prepare($sql);
-
-    //         $stmt->execute([':id' => $id]);
-
-    //         return $stmt->fetch();
-    //     } catch(Exception $e){
-    //         echo "Lỗi" . $e->getMessage();
-    //     }
-    // }
-
-    // public function updateAnhSanPham($id, $new_file){
-    //     try{
-    //         $sql = 'UPDATE hinh_anh_san_phams
-    //                 SET
-    //                     link_hinh_anh = :new_file
-    //                 WHERE id = :id';
-
-    //         $stmt = $this->conn->prepare($sql);
-
-    //         $stmt->execute([
-    //             ':new_file' => $new_file,
-    //             ':id' => $id
-    //         ]);
-
-    //         //Lấy id sản phẩm vừa thêm
-    //         return true;
-    //     } catch(Exception $e){
-    //         echo "Lỗi" . $e->getMessage();
-    //     }
-    // }
-
-    // public function destroyAnhSanPham($id){
-    //     try{
-    //         $sql = 'DELETE FROM hinh_anh_san_phams WHERE id = :id';
-
-    //         $stmt = $this->conn->prepare($sql);
-
-    //         $stmt->execute([
-    //             ':id' => $id
-    //         ]);
-
-    //         return true;
-    //     } catch(Exception $e){
-    //         echo "Lỗi" . $e->getMessage();
-    //     }
-    // }
-
-    // public function destroySanPham($id){
-    //     try{
-    //         $sql = 'DELETE FROM san_phams WHERE id = :id';
-
-    //         $stmt = $this->conn->prepare($sql);
-
-    //         $stmt->execute([
-    //             ':id' => $id
-    //         ]);
-
-    //         return true;
-    //     } catch(Exception $e){
-    //         echo "Lỗi" . $e->getMessage();
-    //     }
-    // }
+    
 }

@@ -6064,3 +6064,28 @@ blockquote {
 }
 
 /*----- footer area end -----*/
+
+/* Style cho phần Khoảng Giá */
+.price-filter {
+  margin: 20px 0;
+}
+
+.price-filter .form-check {
+  margin-bottom: 10px;
+}
+
+.price-filter .form-check-label {
+  font-size: 14px;
+  color: #333;
+}
+
+.price-filter .btn {
+  padding: 8px 15px;
+  font-size: 14px;
+}
+
+/* Style cho danh mục active (giữ nguyên) */
+.shop-categories li a.active {
+  color: #007bff;
+  font-weight: bold;
+}

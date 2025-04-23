@@ -131,39 +131,25 @@ class AdminTaiKhoan{
     }
 
 
-    public function checkLogin($email,$mat_khau){
-        try{
-            $sql = "SELECT * FROM tai_khoans WHERE email = :email";
+    public function checkLogin($email, $password)
+    {
+        try {
+            $sql = 'SELECT id, ho_ten, email, mat_khau, chuc_vu_id 
+                    FROM tai_khoans 
+                    WHERE email = :email AND trang_thai = 1';
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute(['email'=>$email]);
-            $user = $stmt->fetch();
+            $stmt->execute(['email' => $email]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-           // var_dump(  password_verify($mat_khau,$user['mat_khau'] )); die;
-            if($user && password_verify($mat_khau,$user['mat_khau'] )){
-                if ($user['chuc_vu_id'] == 1 ) {
-                    if( $user['trang_thai'] == 1){
-                        return $user['email'];
-                    }else{
-                        return "Tài Khoản Bị Cấm";
-                    }
-                }
-                else{
-                    return "Tài Khoản Không Có Quyền Đăng Nhập";
-                }
-                
+            if ($user && password_verify($password, $user['mat_khau'])) {
+                unset($user['mat_khau']); // Xóa mật khẩu khỏi dữ liệu
+                return $user; // Trả về mảng chứa id, ho_ten, email, chuc_vu_id
             }
-            else{
-                  return "Lỗi Đăng Nhập"  ;
-            }
-        }catch(\Exception $e){
-            echo "Lỗi" .$e->getMessage();
-            return false ;
+            return false;
+        } catch (Exception $e) {
+            error_log("Lỗi kiểm tra đăng nhập: " . $e->getMessage());
+            return false;
         }
     }
-
-
-
-
-    
 
 }

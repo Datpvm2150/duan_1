@@ -62,13 +62,13 @@
                     <td>
                       <div class="btn-group">
                         <a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
-                        <button class="btn btn-primary"><i class="far fa-eye"></i></button>
+                        <button class="btn btn-outline-primary"><i class="far fa-eye"></i></button>
 
                         <a href="<?= BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $sanPham['id'] ?>">
-                          <button class="btn btn-warning"><i class="fas fa-cogs"></i></button>
+                          <button class="btn btn-outline-warning"><i class="fas fa-cogs"></i></button>
                         </a>
                         <a href="<?= BASE_URL_ADMIN . '?act=xoa-san-pham&id_san_pham=' . $sanPham['id'] ?>" onclick="return confirm('Bạn có chắc chắn xóa hay không?')">
-                          <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                          <button class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
                         </a>
                       </div>
                     </td>

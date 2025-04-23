@@ -325,6 +325,8 @@ class AdminSanPhamController {
         $sanPham = $this->modelSanPham->getDetailtSanPham($id);
         
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
+
+        $binhLuans = $this->modelSanPham->getBinhLuanBySanPham($_GET['id_san_pham']);
         
         if ($sanPham){
             require_once './views/sanpham/detailSanPham.php';
@@ -334,5 +336,26 @@ class AdminSanPhamController {
             exit();
         }
         
+    }
+
+    public function anBinhLuan(){
+        $id = $_GET['id_binh_luan'];
+        $this->modelSanPham->updateTrangThaiBinhLuan($id, 0);
+        header("Location: " . BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $_GET['id_san_pham']);
+        exit();
+    }
+
+    public function hienBinhLuan(){
+        $id = $_GET['id_binh_luan'];
+        $this->modelSanPham->updateTrangThaiBinhLuan($id, 1);
+        header("Location: " . BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $_GET['id_san_pham']);
+        exit();
+    }
+
+    public function xoaBinhLuan(){
+        $id = $_GET['id_binh_luan'];
+        $this->modelSanPham->deleteBinhLuan($id);
+        header("Location: " . BASE_URL_ADMIN . '?act=chi-tiet-san-pham&id_san_pham=' . $_GET['id_san_pham']);
+        exit();
     }
 }

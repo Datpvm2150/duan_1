@@ -52,7 +52,7 @@
 
                     </div>
                 </div>
-                
+
                 <ul class="nav nav-tabs row mt-4" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Bình luận của sản phẩm</button>
@@ -63,38 +63,44 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Tên người bình luận</th>
+                                    <th>STT</th>
+                                    <th>ID tài khoản</th>
                                     <th>Nội dung</th>
                                     <th>Ngày đăng</th>
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Phạm Văn Mạnh Đạt</td>
-                                    <td>Pin to, siêu khỏe</td>
-                                    <td>14/11/2024</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="#"><button class="btn btn-warning">Ẩn</button></a>
-                                            <a href="#"><button class="btn btn-danger">Xóa</button></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Phạm Văn Mạnh</td>
-                                    <td>Điện thoại bền, siêu khỏe</td>
-                                    <td>14/11/2024</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="#"><button class="btn btn-warning">Ẩn</button></a>
-                                            <a href="#"><button class="btn btn-danger">Xóa</button></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <?php if (!empty($binhLuans) && is_array($binhLuans)): ?>
+                                    <?php foreach ($binhLuans as $key => $binhLuan): ?>
+                                        <tr>
+                                            <td><?= $key + 1 ?></td>
+                                            <td><?= htmlspecialchars($binhLuan['tai_khoan_id']) ?></td>
+                                            <td><?= htmlspecialchars($binhLuan['noi_dung']) ?></td>
+                                            <td><?= date('d/m/Y', strtotime($binhLuan['ngay_dang'])) ?></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <?php if ($binhLuan['trang_thai'] == 1): ?>
+                                                        <a href="<?= BASE_URL_ADMIN . "?act=an-binh-luan&id_binh_luan=" . $binhLuan['id'] . "&id_san_pham=" . $sanPham['id'] ?>">
+                                                            <button class="btn btn-warning">Ẩn</button>
+                                                        </a>
+                                                    <?php else: ?>
+                                                        <a href="<?= BASE_URL_ADMIN . "?act=hien-binh-luan&id_binh_luan=" . $binhLuan['id'] . "&id_san_pham=" . $sanPham['id'] ?>">
+                                                            <button class="btn btn-success">Hiện</button>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                    <a href="<?= BASE_URL_ADMIN . "?act=xoa-binh-luan&id_binh_luan=" . $binhLuan['id'] . "&id_san_pham=" . $sanPham['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa bình luận này không?');">
+                                                        <button class="btn btn-danger">Xóa</button>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="5" class="text-center">Chưa có bình luận nào.</td>
+                                    </tr>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
