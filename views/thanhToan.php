@@ -129,7 +129,7 @@
                                             <tr>
                                                 <td>Shipping</td>
                                                 <td class="d-flex justify-content-center">
-                                                    <strong>30.000đ</strong>
+                                                    <strong>20.000đ</strong>
                                                 </td>
                                             </tr>
                                             <tr>

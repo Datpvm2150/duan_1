@@ -110,12 +110,12 @@
                                                 foreach($listBinhLuan as $binhLuan): ?>
                                                     <div class="total-reviews">
                                                         <div class="rev-avatar">
-                                                            <img src="<?= $binhLuan['anh_dai_dien'] ?>" alt="">
+                                                            <img src="<?= $binhLuan['anh_dai_dien'] ?>" alt="" width="90px" height="90px">
                                                         </div>
                                                         <div class="review-box">
                                                         
                                                             <div class="post-author">
-                                                                <p><span><?= $binhLuan['ho_ten'] ?></span><?= formatDate($binhLuan['ngay_dang'])  ?></p>
+                                                                <p><span><?= $binhLuan['ho_ten'] ?></span><br><?= formatDate($binhLuan['ngay_dang'])  ?></p>
                                                             </div>
                                                             <p><?= $binhLuan['noi_dung'] ?></p>
                                                         </div>

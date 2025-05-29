@@ -15,7 +15,7 @@
                                 <div class="hero-slider-content slide-1">
                                     <h2 class="slide-title">Iphone 16 Pro<span>Black Titan</span></h2>
                                     <h4 class="slide-desc">Black Titan & 125GB</h4>
-                                    <a href="shop.html" class="btn btn-hero">Xem thêm</a>
+                                    <a href="<?= BASE_URL . '?act=san-pham' ?>" class="btn btn-hero">Xem thêm</a>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                                 <div class="hero-slider-content slide-2 float-md-end float-none">
                                     <h2 class="slide-title" style="color: #00CED1; text-shadow: 1px 1px 0 #000; text-align: end; ">Realme Note 50<span>RAM 4GB</span></h2>
                                     <h4 class="slide-desc" style="font-weight: bold; text-align: end; ">Sky Blue & RAM 4GB + ROM 128GB</h4>
-                                    <a href="shop.html" class="btn btn-hero">Xem thêm</a>
+                                    <a href="<?= BASE_URL . '?act=san-pham' ?>" class="btn btn-hero">Xem thêm</a>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                                 <div class="hero-slider-content slide-3">
                                     <h2 class="slide-title">Iphone 16 Pro<span>Gray</span></h2>
                                     <h4 class="slide-desc">Gray & RAM 256GB + ROM 128GB</h4>
-                                    <a href="shop.html" class="btn btn-hero">Xem thêm</a>
+                                    <a href="<?= BASE_URL . '?act=san-pham' ?>" class="btn btn-hero">Xem thêm</a>
                                 </div>
                             </div>
                         </div>

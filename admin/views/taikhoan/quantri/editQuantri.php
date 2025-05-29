@@ -28,7 +28,7 @@
           <div class="col-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title <?= $quanTri['ho_ten'];?>" >Sửa tàikhoản quản trị viên : </h3>
+                <h3 class="card-title" >Sửa tài khoản quản trị viên : <?= $quanTri['ho_ten'] ?></h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
